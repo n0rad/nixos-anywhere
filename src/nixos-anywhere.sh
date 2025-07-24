@@ -494,6 +494,7 @@ uploadSshKey() {
     if [[ ${envPassword} == y ]]; then
       HOME="$sshCopyHome" sshpass -e \
         ssh-copy-id \
+        -f \
         -o ConnectTimeout=10 \
         "${sshArgs[@]}" \
         "$sshConnection"
@@ -502,6 +503,7 @@ uploadSshKey() {
       # `IdentitiesOnly=no` first as the first time an SSH option is
       # specified on the command line takes precedence
       HOME="$sshCopyHome" ssh-copy-id \
+        -f \
         -o IdentitiesOnly=no \
         -o ConnectTimeout=10 \
         "${sshArgs[@]}" \
